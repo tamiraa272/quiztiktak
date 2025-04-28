@@ -1,22 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <p>
-        Асуулт: ggjkrgjr ?
-    </p>
-    <button onclick="myFunction()">Try it</button>
 
-  <input id="answerInput">
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> Cognitive Questions</title>
+
+</head>
+<style>
+    #question{
+        font-size: 35px;
+        font-weight: bold;
+        color: black;
+    }
+    #enter{
+        background-color: green;
+        color: white;
+        width: 150px;
+        height: 50px;
+        font-size: 25px;
+        border: none;
+        border-radius: 20px;
+    }
+    #answerInput{
+        width: 150px;
+        height: 50px;
+
+    }
+    #result{
+        font-size: 35px;
+        font-weight: bold;
+        color: black;
+    }
+    body{
+        background-color: antiquewhite;
+    }
+</style>
+<body>
+
+
+
+    <p id="question"></p>
+    <input type="text" id="answerInput" placeholder="Type your answer">
+
+    <button id="enter">Enter</button>
+
+
+
+
+    <p id="result"></p>
+
+
+
+    <script>
+        questions =
+
+
+            [{ q: "Чингис хаан хэдэн онд төрсөн бэ ?", a: "1162" },{ q: "Их монголулс хэдэн онд байгуулагдсан бэ?", a: "1206" }];
+
+
+
+        let currentQuestion = 0;
+
+
+
+        function showQuestion() {
+
+            document.getElementById("question").innerText = questions[currentQuestion].q;
+        }
+
+
+
+        document.getElementById("enter").addEventListener("click", function () {
+
+            const userAnswer = document.getElementById("answerInput").value;
+            const correctAnswer = questions[currentQuestion].a.toLowerCase();
+
+
+            if (userAnswer === questions[currentQuestion].a) {
+
+                document.getElementById("result").innerText = "Yes!";
+
+                currentQuestion++;
+
+                document.getElementById("answerInput").value = ""; // clear input
+
+                if (currentQuestion < questions.length) {
+
+                    showQuestion();
+
+                } else {
+
+                    document.getElementById("question").innerText = "END";
+
+                    document.getElementById("enter").disabled = true;
+
+                }
+
+            } else {
+                document.getElementById("result").innerText = "No try again.";
+
+            }
+
+        });
+
+
+
+        // Start first question
+
+        showQuestion();
+
+    </script>
+
+
+
 </body>
-<script>
-    {function()
-    var x=document.getElementById('answerInput').value;
-    document.getElementById("answerinput").innerHTML = x;
-}
-</script>
+
 </html>
